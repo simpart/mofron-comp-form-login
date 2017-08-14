@@ -1,7 +1,7 @@
 {
-  "name": "mofron-comp-form-login",
-  "version": "0.0.1",
-  "description": "login form component for mofron",
+  "name": "mofron-comp-loginform",
+  "version": "0.0.2",
+  "description" : "this component has been renamed (mofron-comp-form-login -> mofron-comp-loginform)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

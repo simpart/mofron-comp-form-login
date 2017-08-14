@@ -2,19 +2,19 @@
  * @file mofron-comp-form-login/index.js
  * @author simpart
  */
-require('mofron-comp-form');
+let Form = require('mofron-comp-form');
 require('mofron-comp-input');
 
 /**
- * @class Login
+ * @class LoginForm
  * @brief login form component for mofron
  */
-mofron.comp.form.Login = class extends mofron.comp.Form {
+mofron.comp.LoginForm = class extends Form {
     
     constructor (opt) {
         try {
             super();
-            this.name('Login');
+            this.name('LoginForm');
             this.prmOpt(opt);
         } catch (e) {
             console.error(e.stack);
@@ -45,27 +45,10 @@ mofron.comp.form.Login = class extends mofron.comp.Form {
     
     addChild (chd, disp, idx) {
         try {
-            if (true === mofron.func.isInclude(this, ['Form', 'Login'])) {
-                if (0 === this.layout().length) {
-                    /* set default layout */
-                    this.layout([
-                        new mofron.layout.Margin('top', 25),
-                        new mofron.layout.HrzCenter({ rate : 70 })
-                    ]);
-                }
-                
-                if (false === this.m_setbtn) {
-                    this.m_setbtn = true;
-                    let sub       = this.submitComp();
-                    super.addChild(sub.parent().parent());
-                }
-                
-                if (false === this.m_setmsg) {
-                    this.m_setmsg = true;
-                    super.addChild(this.message(), false, 0);
-                }
+            if (true === mofron.func.isInclude(this, 'LoginForm')) {
+                this.initFormComp();
             }
-            super.addChild(chd, disp, (undefined === idx) ? this.child().length-1 : idx);
+            super.addChild(chd, disp, idx);
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -73,5 +56,5 @@ mofron.comp.form.Login = class extends mofron.comp.Form {
     }
 
 }
-mofron.comp.form.login = {};
-module.exports = mofron.comp.form.Login;
+mofron.comp.loginform = {};
+module.exports = mofron.comp.LoginForm;
