@@ -2,14 +2,14 @@
  * @file mofron-comp-form-login/index.js
  * @author simpart
  */
+let mf = require('mofron');
 let Form  = require('mofron-comp-form');
 let Input = require('mofron-comp-input');
-
 /**
  * @class LoginForm
  * @brief login form component for mofron
  */
-mofron.comp.LoginForm = class extends Form {
+mf.comp.LoginForm = class extends Form {
     
     constructor (po) {
         try {
@@ -27,20 +27,19 @@ mofron.comp.LoginForm = class extends Form {
             super.initDomConts(prm);
             this.addChild(
                 new Input({
-                        label   : 'Username',
-                        text    : 'test',
-                        require : true
-                })
-            );
-            this.addChild(
-                new Input({
-                        label   : 'Password',
-                        text    : 'test',
-                        require : true,
-                        secret  : true
+                    label   : 'Username',
+                    require : true
                 })
             );
             
+            this.addChild(
+                new Input({
+                    label   : 'Password',
+                    require : true,
+                    secret  : true
+                })
+            );
+            this.size(this.size());
             this.submitComp().text('Login');
             
         } catch (e) {
@@ -53,7 +52,7 @@ mofron.comp.LoginForm = class extends Form {
         try {
             let inp = this.theme().component('mofron-comp-input');
             if (null !== inp) {
-                this.input(inp);
+                //this.input(inp);
             }
         } catch (e) {
             console.error(e.stack);
@@ -73,29 +72,65 @@ mofron.comp.LoginForm = class extends Form {
         }
     }
     
-    input (inp) {
+    size (siz) {
         try {
-            if (undefined === inp) {
+            if (undefined === siz) {
                 /* getter */
-                if (undefined === this.m_input) {
-                    this.input(new Input());
+                if (undefined === this.m_size) {
+                    this.size(20);
                 }
-                return this.m_input;
+                return this.m_size;
             }
             /* setter */
-            if (true !== mf.func.isInclude(inp, 'Input')) {
-                throw new Error('invalid parameter');
+            if ('number' !== typeof siz) {
+                throw new Error('invalid paramter');
             }
-            let fom_chd = this.child();
-            if (0 !== fom_chd.length) {
-                for (let fidx in fom_chd) {
-                    if (true === mf.func.isInclude(fom_chd[fidx], 'Input')) {
-                        inp.execOption(fom_chd[fidx].getOption());
-                        fom_chd.updChild(fom_chd[fidx], inp);
-                    }
+            this.m_size = siz;
+            
+            let chd = this.child();
+            for (let cidx in chd) {
+                if ( ((this.child().length-1) == cidx) &&
+                     (true === mf.func.isObject(chd[cidx], 'Component')) ) {
+                    this.submitComp().height(siz-(siz/3));
+                } else {
+                    chd[cidx].height(
+                        (true === mf.func.isInclude(chd[cidx], 'Message')) ? 2 * siz : siz
+                    );
                 }
             }
-            this.m_input = inp;
+            
+        } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
+    /**
+     * height getter
+     *
+     */
+    height () {
+        try {
+            let hei = 0;
+            let buf = null;
+            let chd = this.child();
+            for (let cidx in chd) {
+                if ( (true === mf.func.isInclude(chd[cidx], 'Message')) &&
+                     (true !== chd[cidx].visible()) ) {
+                    /* noting to do */
+                } else if ( ((this.child().length-1) == cidx) &&
+                            (true === mf.func.isObject(chd[cidx], 'Component')) ) {
+                    hei += this.submitComp().height();
+                } else {
+                    buf = null;
+                    buf = chd[cidx].height();
+                    if ('number' === typeof buf) {
+                        hei += buf;
+                    } 
+                }
+                hei += this.getConfig('layout', 'Margin').value();
+            }
+            return hei;
         } catch (e) {
             console.error(e.stack);
             throw e;
