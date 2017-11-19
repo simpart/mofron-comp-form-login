@@ -1,6 +1,6 @@
 {
   "name": "mofron-comp-loginform",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description" : "this component has been renamed (mofron-comp-form-login -> mofron-comp-loginform)",
   "main": "index.js",
   "scripts": {

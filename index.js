@@ -25,13 +25,14 @@ mf.comp.LoginForm = class extends Form {
     initDomConts (prm) {
         try {
             super.initDomConts(prm);
+
             this.addChild(
                 new Input({
                     label   : 'Username',
                     require : true
                 })
             );
-            
+           
             this.addChild(
                 new Input({
                     label   : 'Password',
@@ -60,17 +61,43 @@ mf.comp.LoginForm = class extends Form {
         }
     }
     
-    addChild (chd, disp, idx) {
-        try {
-            if (true === mofron.func.isInclude(this, 'LoginForm')) {
-                this.initFormComp();
-            }
-            super.addChild(chd, disp, idx);
-        } catch (e) {
-            console.error(e.stack);
-            throw e;
-        }
-    }
+    //addChild (chd, idx) {
+    //    try {
+    //        super.addChild(chd, disp, idx);
+    //    } catch (e) {
+    //        console.error(e.stack);
+    //        throw e;
+    //    }
+    //}
+    
+    //input (inp) {
+    //    try {
+    //        if (undefined === inp) {
+    //            /* getter */
+    //            if (undefined === this.m_input) {
+    //                this.input(new Input());
+    //            }
+    //            return this.m_input;
+    //        }
+    //        /* setter */
+    //        if (true !== mf.func.isInclude(inp, 'Input')) {
+    //            throw new Error('invalid parameter');
+    //        }
+    //        let fom_chd = this.child();
+    //        if (0 !== fom_chd.length) {
+    //            for (let fidx in fom_chd) {
+    //                if (true === mf.func.isInclude(fom_chd[fidx], 'Input')) {
+    //                    inp.execOption(fom_chd[fidx].getOption());
+    //                    fom_chd.updChild(fom_chd[fidx], inp);
+    //                }
+    //            }
+    //        }
+    //        this.m_input = inp;
+    //    } catch (e) {
+    //        console.error(e.stack);
+    //        throw e;
+    //    }
+    //}
     
     size (siz) {
         try {
@@ -93,9 +120,7 @@ mf.comp.LoginForm = class extends Form {
                      (true === mf.func.isObject(chd[cidx], 'Component')) ) {
                     this.submitComp().height(siz-(siz/3));
                 } else {
-                    chd[cidx].height(
-                        (true === mf.func.isInclude(chd[cidx], 'Message')) ? 2 * siz : siz
-                    );
+                    chd[cidx].height(siz);
                 }
             }
             
@@ -105,10 +130,6 @@ mf.comp.LoginForm = class extends Form {
         }
     }
     
-    /**
-     * height getter
-     *
-     */
     height () {
         try {
             let hei = 0;
@@ -118,6 +139,7 @@ mf.comp.LoginForm = class extends Form {
                 if ( (true === mf.func.isInclude(chd[cidx], 'Message')) &&
                      (true !== chd[cidx].visible()) ) {
                     /* noting to do */
+                    continue;
                 } else if ( ((this.child().length-1) == cidx) &&
                             (true === mf.func.isObject(chd[cidx], 'Component')) ) {
                     hei += this.submitComp().height();
@@ -130,6 +152,7 @@ mf.comp.LoginForm = class extends Form {
                 }
                 hei += this.getConfig('layout', 'Margin').value();
             }
+            hei += this.getConfig('layout', 'Margin').value();
             return hei;
         } catch (e) {
             console.error(e.stack);
