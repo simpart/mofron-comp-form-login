@@ -1,14 +1,14 @@
 {
   "name": "mofron-comp-loginform",
-  "version": "0.0.5",
-  "description" : "this component has been renamed (mofron-comp-form-login -> mofron-comp-loginform)",
+  "version": "0.0.7",
+  "description" : "login form component for mofron",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/simpart/mofron-comp-form-login.git"
+    "url": "git+https://github.com/simpart/mofron-comp-loginform.git"
   },
   "keywords": [
     "mofron"
@@ -16,7 +16,7 @@
   "author": "simparts",
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
-    "url": "https://github.com/simpart/mofron-comp-form-login/issues"
+    "url": "https://github.com/simpart/mofron-comp-loginform/issues"
   },
-  "homepage": "https://github.com/simpart/mofron-comp-form-login#readme"
+  "homepage": "https://github.com/simpart/mofron-comp-loginform#readme"
 }

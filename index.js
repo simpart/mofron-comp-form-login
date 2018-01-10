@@ -61,44 +61,6 @@ mf.comp.LoginForm = class extends Form {
         }
     }
     
-    //addChild (chd, idx) {
-    //    try {
-    //        super.addChild(chd, disp, idx);
-    //    } catch (e) {
-    //        console.error(e.stack);
-    //        throw e;
-    //    }
-    //}
-    
-    //input (inp) {
-    //    try {
-    //        if (undefined === inp) {
-    //            /* getter */
-    //            if (undefined === this.m_input) {
-    //                this.input(new Input());
-    //            }
-    //            return this.m_input;
-    //        }
-    //        /* setter */
-    //        if (true !== mf.func.isInclude(inp, 'Input')) {
-    //            throw new Error('invalid parameter');
-    //        }
-    //        let fom_chd = this.child();
-    //        if (0 !== fom_chd.length) {
-    //            for (let fidx in fom_chd) {
-    //                if (true === mf.func.isInclude(fom_chd[fidx], 'Input')) {
-    //                    inp.execOption(fom_chd[fidx].getOption());
-    //                    fom_chd.updChild(fom_chd[fidx], inp);
-    //                }
-    //            }
-    //        }
-    //        this.m_input = inp;
-    //    } catch (e) {
-    //        console.error(e.stack);
-    //        throw e;
-    //    }
-    //}
-    
     size (siz) {
         try {
             if (undefined === siz) {
