@@ -11,19 +11,9 @@ let Input = require('mofron-comp-input');
  */
 mf.comp.LoginForm = class extends Form {
     
-    constructor (po) {
-        try {
-            super();
-            this.name('LoginForm');
-            this.prmOpt(po);
-        } catch (e) {
-            console.error(e.stack);
-            throw e;
-        }
-    }
-    
     initDomConts (prm) {
         try {
+            this.name('LoginForm');
             super.initDomConts(prm);
 
             this.addChild(
@@ -122,5 +112,5 @@ mf.comp.LoginForm = class extends Form {
         }
     }
 }
-mofron.comp.loginform = {};
 module.exports = mofron.comp.LoginForm;
+/* end of file */
