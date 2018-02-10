@@ -10,10 +10,23 @@ let Input = require('mofron-comp-input');
  * @brief login form component for mofron
  */
 mf.comp.LoginForm = class extends Form {
+    constructor (po) {
+        try {
+            super();
+            this.name('LoginForm');
+            if (null === po) {
+                this.adom();
+            } else {
+                this.prmOpt(po);
+            }
+        } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
     
     initDomConts (prm) {
         try {
-            this.name('LoginForm');
             super.initDomConts(prm);
 
             this.addChild(
