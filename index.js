@@ -32,6 +32,7 @@ mf.comp.LoginForm = class extends Form {
             this.addChild(
                 new Input({
                     label   : 'Username',
+                    setKey  : 'username',
                     require : true
                 })
             );
@@ -39,6 +40,7 @@ mf.comp.LoginForm = class extends Form {
             this.addChild(
                 new Input({
                     label   : 'Password',
+                    setKey  : 'password',
                     require : true,
                     secret  : true
                 })
