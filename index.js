@@ -27,7 +27,7 @@ mf.comp.LoginForm = class extends Form {
             this.addChild(
                 new Input({
                     label   : 'Username',
-                    setKey  : 'username',
+                    sendKey : 'username',
                     require : true
                 })
             );
@@ -35,7 +35,7 @@ mf.comp.LoginForm = class extends Form {
             this.addChild(
                 new Input({
                     label   : 'Password',
-                    setKey  : 'password',
+                    sendKey : 'password',
                     require : true,
                     secret  : true
                 })
