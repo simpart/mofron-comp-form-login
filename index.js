@@ -48,18 +48,6 @@ mf.comp.LoginForm = class extends Form {
             throw e;
         }
     }
-    
-    themeConts () {
-        try {
-            let inp = this.theme().component('mofron-comp-input');
-            if (null !== inp) {
-                //this.input(inp);
-            }
-        } catch (e) {
-            console.error(e.stack);
-            throw e;
-        }
-    }
 }
 module.exports = mofron.comp.LoginForm;
 /* end of file */
