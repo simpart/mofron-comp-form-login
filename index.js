@@ -1,29 +1,39 @@
 /**
- * @file mofron-comp-form-login/index.js
+ * @file   mofron-comp-form-login/index.js
+ * @brief  login form component for mofron
  * @author simpart
  */
-let mf = require('mofron');
-let Form  = require('mofron-comp-form');
-let Input = require('mofron-comp-input');
-/**
- * @class LoginForm
- * @brief login form component for mofron
- */
+const mf    = require('mofron');
+const Form  = require('mofron-comp-form');
+const Input = require('mofron-comp-input');
+
 mf.comp.LoginForm = class extends Form {
-    constructor (po) {
+    /**
+     * initialize login form
+     *
+     * @param p1 (object) component option
+     * @param p1 (string) path to uri
+     * @param p2 (component) form child component
+     */
+    constructor (po, p2) {
         try {
             super();
             this.name('LoginForm');
-            this.prmOpt(po);
+            this.prmOpt(po, p2);
         } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
     
-    initDomConts (prm) {
+    /**
+     * initialize dom contents
+     *
+     * @note private method
+     */
+    initDomConts () {
         try {
-            super.initDomConts(prm);
+            super.initDomConts();
             this.addChild(
                 new Input({
                     label   : 'Username',
@@ -40,9 +50,7 @@ mf.comp.LoginForm = class extends Form {
                     secret  : true
                 })
             );
-            
-            this.submitComp().text('Login');
-            
+            this.submitConts('Login');
         } catch (e) {
             console.error(e.stack);
             throw e;
