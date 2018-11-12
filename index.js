@@ -1,11 +1,14 @@
 /**
- * @file   mofron-comp-form-login/index.js
+ * @file   mofron-comp-form-loginform/index.js
  * @brief  login form component for mofron
  * @author simpart
  */
-const mf    = require('mofron');
-const Form  = require('mofron-comp-form');
-const Input = require('mofron-comp-input');
+const mf      = require('mofron');
+const Form    = require('mofron-comp-form');
+const Input   = require('mofron-comp-input');
+const HrzCent = require('mofron-layout-hrzcenter');
+const Margin  = require('mofron-layout-margin');
+const Relatv  = require('mofron-layout-relative');
 
 mf.comp.LoginForm = class extends Form {
     /**
@@ -34,11 +37,17 @@ mf.comp.LoginForm = class extends Form {
     initDomConts () {
         try {
             super.initDomConts();
+            this.layout([
+                new HrzCent(75),
+                new Margin('top', '0.2rem')
+            ]);
+            
             this.addChild(
                 new Input({
                     label   : 'Username',
                     sendKey : 'username',
-                    require : true
+                    require : true,
+                    height  : '0.33rem'
                 })
             );
            
@@ -47,10 +56,52 @@ mf.comp.LoginForm = class extends Form {
                     label   : 'Password',
                     sendKey : 'password',
                     require : true,
-                    secret  : true
+                    secret  : true,
+                    height  : '0.33rem'
                 })
             );
-            this.submitConts('Login');
+            
+            this.submitConts().execOption({
+                text      : 'Login',
+                sizeValue : ['margin-top', '0.2rem']
+            });
+
+            this.height('1.2rem');
+        } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
+    /**
+     * send post
+     * change height when send was error
+     */
+    send (prm) {
+        try {
+            let msg = this.message().visible();
+            super.send(prm);
+            let hei = null;
+            if (true === this.message().visible()) {
+                if (true === msg) { 
+                    return;
+                }
+                hei = mf.func.sizeSum(
+                          this.height(),
+                          this.message().height(),
+                          this.layout('Margin').value()
+                      );
+            } else {
+                if (false === msg) {
+                    return;
+                }
+                hei = mf.func.sizeDiff(
+                          this.height(),
+                          this.message().height(), 
+                          this.layout('Margin').value()
+                      );
+            }
+            this.height(hei);
         } catch (e) {
             console.error(e.stack);
             throw e;
