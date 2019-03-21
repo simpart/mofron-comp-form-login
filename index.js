@@ -39,32 +39,22 @@ mf.comp.LoginForm = class extends Form {
             super.initDomConts();
             this.layout([
                 new HrzCent(75),
-                new Margin('top', '0.2rem')
+                new Margin({ type: 'top', value: '0.2rem', tag: 'LoginForm' })
             ]);
             
             this.addChild(
                 new Input({
-                    label   : 'Username',
-                    sendKey : 'username',
-                    require : true,
-                    height  : '0.33rem'
+                    label: 'Username', sendKey: 'username', require: true, height: '0.33rem'
                 })
             );
            
             this.addChild(
                 new Input({
-                    label   : 'Password',
-                    sendKey : 'password',
-                    require : true,
-                    secret  : true,
-                    height  : '0.33rem'
+                    label: 'Password', sendKey: 'password', require: true, secret: true, height: '0.33rem'
                 })
             );
             
-            this.submitConts().execOption({
-                text      : 'Login',
-                sizeValue : ['margin-top', '0.2rem']
-            });
+            this.submitConts().option({ text: 'Login', sizeValue: ['margin-top', '0.2rem'] });
 
             this.height('1.2rem');
         } catch (e) {
@@ -89,7 +79,7 @@ mf.comp.LoginForm = class extends Form {
                 hei = mf.func.sizeSum(
                           this.height(),
                           this.message().height(),
-                          this.layout('Margin').value()
+                          this.layout(['Margin', 'LoginForm']).value()
                       );
             } else {
                 if (false === msg) {
@@ -98,7 +88,7 @@ mf.comp.LoginForm = class extends Form {
                 hei = mf.func.sizeDiff(
                           this.height(),
                           this.message().height(), 
-                          this.layout('Margin').value()
+                          this.layout(['Margin', 'LoginForm']).value()
                       );
             }
             this.height(hei);

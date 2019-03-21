@@ -1,6 +1,6 @@
 {
   "name": "mofron-comp-loginform",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description" : "login form component for mofron",
   "main": "index.js",
   "scripts": {
