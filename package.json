@@ -1,12 +1,14 @@
 {
   "name": "mofron-comp-loginform",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description" : "login form component for mofron",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "mofron-comp-form" : "",
+    "mofron-comp-input" : "",
     "mofron-layout-hrzcenter" : "",
     "mofron-layout-margin" : "",
     "mofron-layout-relative" : ""
