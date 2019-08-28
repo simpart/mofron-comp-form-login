@@ -1,0 +1,5 @@
+<require>
+    <tag module="mofron-comp-loginform">LoginForm</tag>
+</require>
+
+<LoginForm uri="http://restful.uri"></LoginForm>

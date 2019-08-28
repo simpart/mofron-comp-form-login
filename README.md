@@ -1,13 +1,20 @@
-# mofron-comp-loginform
-login form component for mofron.<br>
-please see [here](https://github.com/mofron/mofron) about an overview of mofron.
+# mofron-comp-form-loginform
+[mofron](https://mofron.github.io/mofron/) is module based frontend framework.
+
+login form component for mofron
+
 
 # Install
-
-```bash
-npm install mofron-comp-loginform
+```
+npm install mofron mofron-comp-form-loginform
 ```
 
-# Class Specification
-this component based by mofron-comp-form.
-please see [spacification](https://github.com/mofron/mofron-comp-form)
+# Sample
+```html
+<require>
+    <tag module="mofron-comp-loginform">LoginForm</tag>
+</require>
+
+<LoginForm uri="http://restful.uri"></LoginForm>
+```
+
