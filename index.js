@@ -75,22 +75,6 @@ mf.comp.LoginForm = class extends Form {
             throw e;
         }
     }
-    
-    /**
-     * send post
-     * change height when send was error
-     * 
-     * @type private
-     */
-    send (prm) {
-        try {
-            super.send(prm);
-	    this.height(this.height());
-        } catch (e) {
-            console.error(e.stack);
-            throw e;
-        }
-    }
 }
 module.exports = mofron.comp.LoginForm;
 /* end of file */
