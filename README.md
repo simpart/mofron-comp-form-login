@@ -9,12 +9,9 @@ login form component for mofron
 npm install mofron mofron-comp-form-loginform
 ```
 
-# Sample
-```html
-<require>
-    <tag module="mofron-comp-loginform">LoginForm</tag>
-</require>
+# Parameter
 
-<LoginForm uri="http://restful.uri"></LoginForm>
-```
+| Short<br>Form | Parameter Name | Type | Description |
+|:-------------:|:---------------|:-----|:------------|
+| | spacingSize | string (size) | spacing size |
 
